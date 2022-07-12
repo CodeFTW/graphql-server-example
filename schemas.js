@@ -5,6 +5,10 @@ const typeDefs = gql`
     users: [User]
   }
 
+  type Mutation {
+    addUser(user: UserInput!): User
+  }
+
   type Address {
     street: String
     city: String
@@ -35,6 +39,20 @@ const typeDefs = gql`
     # Timestamp
     createAt: String
     updateAt: String
+  }
+
+  input AddressInput {
+    street: String
+    city: String
+    state: String
+  }
+
+  input UserInput {
+    # Auth Info
+    name: String!
+    email: String!
+    authUID: String!
+    address: AddressInput
   }
 `;
 

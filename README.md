@@ -11,11 +11,34 @@ npm start
 
 ### Visite http://localhost:4000/graphql
 
-Execute o código abaixo:
+Execute o código abaixo para realizar uma consulta:
 
 ```graphql
-query {
+query listUsers {
   users {
+    id
+    name
+    address {
+      street
+      city
+      state
+    }
+  }
+}
+```
+
+Execute o código abaixo para realizar uma alteração:
+
+```graphql
+mutation addUser {
+  addUser(
+    user: {
+      name: "name input"
+      email: "email input"
+      authUID: "authUID input"
+      address: { street: "street 1" }
+    }
+  ) {
     id
     name
     address {
